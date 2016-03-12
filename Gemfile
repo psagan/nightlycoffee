@@ -48,7 +48,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # https://github.com/plataformatec/devise
-gem 'devise'
+gem 'devise', '~> 4.0.0.rc2'
 
 # https://github.com/haml/haml
 gem 'haml'
