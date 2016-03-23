@@ -8,12 +8,13 @@ feature 'Visitor on homepage' do
   end
 
   scenario 'sees list of latest articles' do
-    article = Article.create!(
-       title: 'First article',
-       content: 'Testing description'
-    )
+    article = double(:article, title: 'First article', content: 'Testing description')
+    article2 = double(:article, title: 'Second article', content: 'Testing description')
+    allow(Article).to receive(:all).and_return([article, article2])
 
     visit root_path
+
     expect(page).to have_content(article.title)
+    expect(page).to have_content(article2.title)
   end
 end
