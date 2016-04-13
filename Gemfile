@@ -62,3 +62,6 @@ gem 'haml'
 
 # https://github.com/indirect/haml-rails
 gem 'haml-rails', '~> 0.9'
+
+# https://github.com/ctran/annotate_models
+gem 'annotate'
