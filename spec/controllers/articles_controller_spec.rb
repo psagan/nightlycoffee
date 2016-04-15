@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ArticlesController do
 
   describe 'GET #index' do
-    context 'when not admin user' do
+    context 'when not signed in user' do
       it 'redirects to login path' do
         get :index
 
@@ -12,8 +12,15 @@ RSpec.describe ArticlesController do
       end
     end
 
-    context 'when admin user' do
-      pending 'Need to implement user login in tests'
+    context 'when signed in user' do
+      it 'can access page' do
+        user = FactoryGirl.create(:user)
+        sign_in(user)
+
+        get :index
+
+        expect(response).to have_http_status(200)
+      end
     end
   end
 
