@@ -50,3 +50,4 @@ bower.json
 .powenv
 
 .idea
+.DS_Store
