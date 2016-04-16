@@ -39,7 +39,6 @@ RSpec.describe ArticlesController do
     context 'when signed in user' do
       it 'can access page' do
         login_user
-
         article = double(:article, id: 1)
         allow(Article).to receive(:find).and_return(article)
 
@@ -66,7 +65,6 @@ RSpec.describe ArticlesController do
     context 'when signed in user' do
       it 'can access page' do
         login_user
-
         article = double(:article, id: 1)
         allow(Article).to receive(:find).and_return(article)
 
@@ -93,7 +91,6 @@ RSpec.describe ArticlesController do
     context 'when signed in user' do
       it 'can access page' do
         login_user
-
         article = double(:article, id: 1)
         allow(Article).to receive(:find).and_return(article)
 
@@ -104,6 +101,30 @@ RSpec.describe ArticlesController do
     end
   end
 
+  describe 'POST #create' do
+    context 'when not signed in user' do
+      it 'redirects to login path' do
+        post :create, params: {article: {title: 'test', content: 'test'}}
+
+        expect(response).to have_http_status(302)
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+
+    context 'when signed in user' do
+      it 'can access page' do
+        login_user
+        article = Article.create(title: 'test', content: 'test')
+        allow(Article).to receive(:new).and_return(article)
+        allow(article).to receive(:save).and_return(true)
+
+        post :create, params: {article: {title: 'test', content: 'test'}}
+
+        expect(response).to have_http_status(302)
+        expect(response).to redirect_to(article_path(article))
+      end
+    end
+  end
 
 
   private
