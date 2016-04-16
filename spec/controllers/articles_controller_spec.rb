@@ -50,6 +50,33 @@ RSpec.describe ArticlesController do
     end
   end
 
+  describe 'GET #new' do
+    context 'when not signed in user' do
+      it 'redirects to login path' do
+        article = double(:article, id: 1)
+        allow(Article).to receive(:find).and_return(article)
+
+        get :new
+
+        expect(response).to have_http_status(302)
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+
+    context 'when signed in user' do
+      it 'can access page' do
+        login_user
+
+        article = double(:article, id: 1)
+        allow(Article).to receive(:find).and_return(article)
+
+        get :new
+
+        expect(response).to have_http_status(200)
+      end
+    end
+  end
+
   describe 'GET #edit' do
     context 'when not signed in user' do
       it 'redirects to login path' do
@@ -76,6 +103,8 @@ RSpec.describe ArticlesController do
       end
     end
   end
+
+
 
   private
 
