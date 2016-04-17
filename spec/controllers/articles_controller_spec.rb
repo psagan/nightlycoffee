@@ -126,6 +126,31 @@ RSpec.describe ArticlesController do
     end
   end
 
+  describe 'POST #update' do
+    context 'when not signed in user' do
+      it 'redirects to login path' do
+        article = Article.create(title: 'test', content: 'test')
+        post :update, params: {article: {title: 'test', content: 'test'}, id: article.id}
+
+        expect(response).to have_http_status(302)
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+
+    context 'when signed in user' do
+      it 'can access page' do
+        login_user
+        article = Article.create(title: 'test', content: 'test')
+        allow(article).to receive(:update).and_return(true)
+
+        post :update, params: {article: {title: 'test', content: 'test'}, id: article.id}
+
+        expect(response).to have_http_status(302)
+        expect(response).to redirect_to(article_path(article))
+      end
+    end
+  end
+
 
   private
 
