@@ -114,7 +114,7 @@ RSpec.describe ArticlesController do
     context 'when signed in user' do
       it 'can access page' do
         login_user
-        article = Article.create(title: 'test', content: 'test')
+        article = FactoryGirl.create(:article)
         allow(Article).to receive(:new).and_return(article)
         allow(article).to receive(:save).and_return(true)
 
@@ -129,7 +129,7 @@ RSpec.describe ArticlesController do
   describe 'POST #update' do
     context 'when not signed in user' do
       it 'redirects to login path' do
-        article = Article.create(title: 'test', content: 'test')
+        article = FactoryGirl.create(:article)
         post :update, params: {article: {title: 'test', content: 'test'}, id: article.id}
 
         expect(response).to have_http_status(302)
@@ -140,7 +140,7 @@ RSpec.describe ArticlesController do
     context 'when signed in user' do
       it 'can access page' do
         login_user
-        article = Article.create(title: 'test', content: 'test')
+        article = FactoryGirl.create(:article)
         allow(article).to receive(:update).and_return(true)
 
         post :update, params: {article: {title: 'test', content: 'test'}, id: article.id}
@@ -154,7 +154,7 @@ RSpec.describe ArticlesController do
   describe 'DELETE #destroy' do
     context 'when not signed in user' do
       it 'redirects to login path' do
-        article = Article.create(title: 'test', content: 'test')
+        article = FactoryGirl.create(:article)
         delete :destroy, params: {id: article.id}
 
         expect(response).to have_http_status(302)
@@ -165,7 +165,7 @@ RSpec.describe ArticlesController do
     context 'when signed in user' do
       it 'can access page' do
         login_user
-        article = Article.create(title: 'test', content: 'test')
+        article = FactoryGirl.create(:article)
 
         delete :destroy, params: {id: article.id}
 
