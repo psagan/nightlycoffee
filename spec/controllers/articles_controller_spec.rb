@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+# @todo - will need some tests for json api - in requests directory
 RSpec.describe ArticlesController do
 
   describe 'GET #index' do
