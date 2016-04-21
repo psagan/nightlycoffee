@@ -66,3 +66,6 @@ gem 'haml-rails', '~> 0.9'
 
 # https://github.com/ctran/annotate_models
 gem 'annotate'
+
+# https://github.com/hiravgandhi/angularjs-rails/
+gem 'angularjs-rails'
