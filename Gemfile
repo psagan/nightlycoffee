@@ -69,3 +69,10 @@ gem 'annotate'
 
 # https://github.com/hiravgandhi/angularjs-rails/
 gem 'angularjs-rails'
+
+# bootstrap!
+# https://github.com/twbs/bootstrap-sass
+gem 'bootstrap-sass', '~> 3.3.5'
+
+# https://github.com/bootstrap-ruby/rails-bootstrap-forms
+gem 'bootstrap_form'
