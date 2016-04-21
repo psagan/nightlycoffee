@@ -1,0 +1,8 @@
+class BackendController < ApplicationController
+  before_action :authenticate_user!
+
+  def index
+
+  end
+
+end
