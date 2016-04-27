@@ -39,6 +39,10 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     addressable (2.4.0)
+    angular-rails-templates (1.0.0)
+      railties (>= 4.2, < 6)
+      sprockets (~> 3.0)
+      tilt
     angularjs-rails (1.5.0)
     annotate (2.7.0)
       activerecord (>= 3.2, < 6.0)
@@ -228,6 +232,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  angular-rails-templates
   angularjs-rails
   annotate
   bootstrap-sass (~> 3.3.5)

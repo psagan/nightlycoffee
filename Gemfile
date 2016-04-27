@@ -76,3 +76,6 @@ gem 'bootstrap-sass', '~> 3.3.5'
 
 # https://github.com/bootstrap-ruby/rails-bootstrap-forms
 gem 'bootstrap_form'
+
+# https://github.com/pitr/angular-rails-templates
+gem 'angular-rails-templates'
