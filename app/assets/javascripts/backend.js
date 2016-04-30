@@ -14,5 +14,7 @@
 //= require jquery_ujs
 //= require angular
 //= require angular-resource
+//= require angular-route
+//= require angular-rails-templates
 //= require bootstrap-sprockets
-//= require backend/app
+//= require_tree ./backend
