@@ -11,6 +11,10 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @article }
+    end
   end
 
   # GET /articles/new

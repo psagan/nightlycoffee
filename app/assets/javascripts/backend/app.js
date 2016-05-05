@@ -1,13 +1,4 @@
-var app = angular.module('App', ['ngRoute', 'ngResource', 'templates'])
-.config(function($routeProvider) {
+var app = angular.module('App', ['ngRoute', 'ngResource', 'templates']);
 
-    $routeProvider.when("/", {
-        controller: 'ArticleCtrl',
-        templateUrl: 'backend/article/tmpl/article_show.html',
-        controllerAs: 'ctrl'
-    })
-
-    .otherwise({redirectTo: '/'});
-})
 
 
