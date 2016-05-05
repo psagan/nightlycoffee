@@ -1,4 +1,4 @@
-var app = angular.module('App', ['ngRoute', 'ngResource', 'templates']);
+var app = angular.module('App', ['ui.router', 'ngResource', 'templates']);
 
 
 

@@ -79,3 +79,6 @@ gem 'bootstrap_form'
 
 # https://github.com/pitr/angular-rails-templates
 gem 'angular-rails-templates'
+
+# https://github.com/AndrewHYi/angular-ui-router-rails
+gem 'angular-ui-router-rails'

@@ -1,0 +1,3 @@
+%div{'ng-repeat': 'article in ctrl.articles'}
+  %a{href: '#', 'ui-sref': 'articlesShow({id: article.id})'}
+    {{article.title}}

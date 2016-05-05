@@ -6,6 +6,10 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     @articles = Article.all
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @articles }
+    end
   end
 
   # GET /articles/1
