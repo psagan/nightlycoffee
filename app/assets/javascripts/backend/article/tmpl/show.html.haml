@@ -1,2 +1,8 @@
 %div
   {{ctrl.article.title}}
+  %br
+  %a{href: '#', 'ui-sref': 'articleEdit({id: ctrl.article.id})'}
+    Edit
+  %a{href: '#', class: 'btn btn-danger', 'ng-click': 'ctrl.destroy()' }
+    Destroy
+
