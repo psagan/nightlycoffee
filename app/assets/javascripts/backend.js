@@ -17,5 +17,6 @@
 //= require angular-route
 //= require angular-ui-router
 //= require angular-rails-templates
+//= require angular-messages
 //= require bootstrap-sprockets
 //= require_tree ./backend
