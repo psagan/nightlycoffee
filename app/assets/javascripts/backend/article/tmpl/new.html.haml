@@ -1,12 +1,17 @@
 %form{novalidate: true, name: 'article_form'}
-  .form-group
+  .form-group{'ng-class': "{'has-error': article_form.title.$invalid && article_form.title.$touched}"}
     %label{for: 'title'}
       Title
-    %input{type: 'text', class: 'form-control', id: 'title', placeholder: 'Title', 'ng-model': 'ctrl.article.title', required: true}
+    %input{type: 'text', class: 'form-control', id: 'title', name: 'title', placeholder: 'Title', 'ng-model': 'ctrl.article.title', required: true}
+    %p{'ng-if': 'article_form.title.$invalid && article_form.title.$touched', class: 'help-block'}
+      %span{'ng-if': 'article_form.title.$error.required'}
+        Title is required
   .form-group
     %label{for: 'content'}
       Content
     %textarea{class: 'form-control', id: 'content', placeholder: 'content', 'ng-model': 'ctrl.article.content', required: true}
       {{ctrl.article.content}}
-  %button{type: 'submit', class: 'btn btn-default', 'ng-click': 'ctrl.create()'}
+  %button{type: 'submit', class: 'btn btn-default', 'ng-click': 'ctrl.create()', 'ng-disabled': 'article_form.$invalid||article_form.$pristine'}
     Submit
+  %a{href: '#', class: 'btn btn-warning', 'ui-sref': 'articles'}
+    Cancel
