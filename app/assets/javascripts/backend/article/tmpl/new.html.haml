@@ -1,9 +1,11 @@
 %form{novalidate: true, name: 'article_form'}
-  .form-group{'ng-class': "{'has-error': article_form.title.$invalid && article_form.title.$touched}"}
+  .form-group{'ng-class': "{'has-error': article_form.title.$invalid && article_form.title.$touched }"}
     %label{for: 'title'}
       Title
     %input{type: 'text', class: 'form-control', id: 'title', name: 'title', placeholder: 'Title', 'ng-model': 'ctrl.article.title', required: true}
     %p{'ng-if': 'article_form.title.$invalid && article_form.title.$touched', class: 'help-block'}
+      %span{'ng-repeat': 'msg in ctrl.errorMessage("title")'}
+        {{msg}}
       %span{'ng-if': 'article_form.title.$error.required'}
         Title is required
   .form-group
