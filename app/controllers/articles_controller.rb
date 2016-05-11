@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: articles
+#
+#  id         :integer          not null, primary key
+#  title      :string
+#  content    :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class ArticlesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_article, only: [:show, :edit, :update, :destroy]
