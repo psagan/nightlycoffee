@@ -143,6 +143,7 @@ RSpec.describe ArticlesController do
         login_user
         article = FactoryGirl.create(:article)
         allow(article).to receive(:update).and_return(true)
+        allow(Article).to receive(:find).and_return(article)
 
         post :update, params: {article: {title: 'test', content: 'test'}, id: article.id}
 
