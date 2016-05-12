@@ -1,4 +1,6 @@
 @import "bootstrap-sprockets";
 @import "_customVariables";
 @import "bootstrap";
+@import "ng-tags-input/ng-tags-input";
+@import "ng-tags-input/ng-tags-input.bootstrap";
 @import "backend/layout";

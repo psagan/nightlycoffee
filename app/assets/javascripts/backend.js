@@ -19,4 +19,5 @@
 //= require angular-rails-templates
 //= require angular-messages
 //= require bootstrap-sprockets
+//= require ng-tags-input/ng-tags-input
 //= require_tree ./backend

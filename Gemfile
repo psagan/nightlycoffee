@@ -82,3 +82,6 @@ gem 'angular-rails-templates'
 
 # https://github.com/AndrewHYi/angular-ui-router-rails
 gem 'angular-ui-router-rails'
+
+# https://github.com/rharriso/bower-rails
+gem 'bower-rails'

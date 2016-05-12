@@ -1,4 +1,4 @@
-angular.module('App', ['ui.router', 'ngResource', 'templates'])
+angular.module('App', ['ui.router', 'ngResource', 'templates', 'ngTagsInput'])
 
 
 
