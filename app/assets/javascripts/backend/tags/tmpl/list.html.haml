@@ -1,0 +1,6 @@
+%div
+  %a{href: '#', 'ui-sref': 'tagsNew', class: 'btn btn-success'}
+    Add tag
+%div{'ng-repeat': 'tag in ctrl.tags'}
+  %a{href: '#', 'ui-sref': 'tagsShow({id: tag.id})'}
+    {{tag.name}}

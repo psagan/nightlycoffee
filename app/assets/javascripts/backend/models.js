@@ -5,4 +5,11 @@ angular.module('App')
             method: 'PUT'
         }
     });
+})
+.factory('Tag', function($resource) {
+    return $resource('/tags/:id.json', {id: '@id'}, {
+        update: {
+            method: 'PUT'
+        }
+    });
 });

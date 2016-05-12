@@ -1,0 +1,8 @@
+%div
+  {{ctrl.tag.name}}
+  %br
+  %a{href: '#', 'ui-sref': 'tagsEdit({id: ctrl.tag.id})'}
+    Edit
+  %a{href: '#', class: 'btn btn-danger', 'ng-click': 'ctrl.destroy()' }
+    Destroy
+

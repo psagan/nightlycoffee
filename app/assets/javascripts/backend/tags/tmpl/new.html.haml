@@ -1,0 +1,14 @@
+%form{novalidate: true, name: 'tag_form'}
+  .form-group{'ng-class': "{'has-error': tag_form.name.$invalid && tag_form.name.$touched }"}
+    %label{for: 'name'}
+      Name
+    %input{type: 'text', class: 'form-control', id: 'name', name: 'name', placeholder: 'Name', 'ng-model': 'ctrl.tag.name', required: true}
+    %p{'ng-if': 'tag_form.name.$invalid && tag_form.name.$touched', class: 'help-block'}
+      %span{'ng-repeat': 'msg in ctrl.errorMessage("name")'}
+        {{msg}}
+      %span{'ng-if': 'tag_form.name.$error.required'}
+        Name is required
+  %button{type: 'submit', class: 'btn btn-default', 'ng-click': 'ctrl.create()', 'ng-disabled': 'tag_form.$invalid||tag_form.$pristine'}
+    Submit
+  %a{href: '#', class: 'btn btn-warning', 'ui-sref': 'tags'}
+    Cancel
