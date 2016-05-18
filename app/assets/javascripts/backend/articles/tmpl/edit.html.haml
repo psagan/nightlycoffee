@@ -9,7 +9,8 @@
     %textarea{class: 'form-control', id: 'content', placeholder: 'content', 'ng-model': 'ctrl.article.content'}
       {{ctrl.article.content}}
   .form-group
-    %tags-input{'ng-model': 'ctrl.tags'}
+    %tags-input{'ng-model': 'ctrl.article.tags'}
+      %auto-complete{source: 'ctrl.loadTags($query)'}
 
   %button{type: 'submit', class: 'btn btn-default', 'ng-click': 'ctrl.update()'}
     Submit

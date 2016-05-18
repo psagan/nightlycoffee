@@ -11,7 +11,7 @@
 
 class ArticlesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_article, only: [:show, :edit, :destroy]
   protect_from_forgery with: :null_session
 
   # GET /articles
@@ -27,10 +27,6 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
-    respond_to do |format|
-      format.html { render :show }
-      format.json { render json: @article }
-    end
   end
 
   # GET /articles/new
@@ -45,10 +41,11 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
-    @article = Article.new(article_params)
+    saver = ArticleSaver.new(article_saver_params)
+    @article = saver.article
 
     respond_to do |format|
-      if @article.save
+      if saver.save
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
         format.json { render json: @article, status: :created, location: @article }
       else
@@ -62,9 +59,11 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1.json
   def update
     respond_to do |format|
-      if @article.update(article_params)
+      saver = ArticleSaver.new(article_saver_params)
+      @article = saver.article
+      if saver.save
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }
-        format.json { render json: @article, status: :ok, location: @article }
+        format.json { render :show, status: :ok, location: @article }
       else
         format.html { render :edit }
         format.json { render json: @article.errors, status: :unprocessable_entity }
@@ -89,7 +88,10 @@ class ArticlesController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def article_params
-      params.require(:article).permit(:title, :content)
+    def article_saver_params
+      {
+          article: params.require(:article).permit(:id, :title, :content),
+          tags: params[:tags]
+      }
     end
 end

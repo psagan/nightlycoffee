@@ -1,11 +1,11 @@
 angular.module('App')
-  .controller 'ArticlesEditController', ($resource, $stateParams, Article) ->
+  .controller 'ArticlesEditController', ($http, $resource, $stateParams, Article, Tag) ->
     that = this
     that.article = Article.get({id: $stateParams.id})
-    that.tags = [
-      { text: 'First' },
-      { text: 'Second' }
-    ]
+
+    that.loadTags = (query) ->
+      $http.get('/tags.json')
+    
     that.update = ->
       that.article.$update ->
     that
