@@ -33,7 +33,8 @@ class ArticleSaver
   end
 
   def assign_tag(tag_data)
-    article.tags << get_tag_object(tag_data)
+    tag = get_tag_object(tag_data)
+    article.tags << tag if tag.valid?
   end
 
   def get_tag_object(tag_data)
