@@ -41,7 +41,7 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
-    saver = ArticleSaver.new(article_saver_params)
+    saver = Operations::Savers::ArticleSaver.new(article_saver_params)
     @article = saver.article
 
     respond_to do |format|
@@ -59,9 +59,9 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1.json
   def update
     respond_to do |format|
-      saver = ArticleSaver.new(article_saver_params)
+      saver = Operations::Updaters::ArticleUpdater.new(article_saver_params)
       @article = saver.article
-      if saver.save
+      if saver.update
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }
         format.json { render :show, status: :ok, location: @article }
       else

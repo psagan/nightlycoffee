@@ -41,10 +41,10 @@ RSpec.describe ArticlesController do
         article = double(:article, id: 1)
         allow(Article).to receive(:find).and_return(article)
 
-        get :show, params: {id: article.id}
+        get :show, params: {id: article.id, format: :json}
 
-        expect(response).to have_http_status(302)
-        expect(response).to redirect_to(new_user_session_path)
+        # json unauthrorized
+        expect(response).to have_http_status(401)
       end
     end
 
@@ -54,7 +54,7 @@ RSpec.describe ArticlesController do
         article = double(:article, id: 1)
         allow(Article).to receive(:find).and_return(article)
 
-        get :show, params: {id: article.id}
+        get :show, params: {id: article.id, format: :json}
 
         expect(response).to have_http_status(200)
       end
@@ -156,10 +156,9 @@ RSpec.describe ArticlesController do
         allow(article).to receive(:update).and_return(true)
         allow(Article).to receive(:find).and_return(article)
 
-        post :update, params: {article: {title: 'test', content: 'test'}, id: article.id}
+        post :update, params: {article: {title: 'test', content: 'test'}, id: article.id, format: :json}
 
-        expect(response).to have_http_status(302)
-        expect(response).to redirect_to(article_path(article))
+        expect(response).to have_http_status(200)
       end
     end
   end

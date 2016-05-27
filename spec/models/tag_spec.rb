@@ -26,10 +26,9 @@ RSpec.describe Tag, :type => :model do
     it "normalizes name" do
       params = {name: "PaTriCk"}
       allow(ApplicationRecord).to receive(:find_or_create_by)
+      expect(Tag).to receive(:normalize_name).with(params[:name]).once
 
       Tag.find_or_create_by(params)
-
-      expect(Tag).to have_received(:normalize_name).with(params[:name]).once
     end
 
     it "calls super of itself" do
