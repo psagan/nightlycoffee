@@ -10,12 +10,4 @@ services:
 
 before_script:
   - psql -c 'create database nightlycoffee_test;' -U postgres
-  - npm install -g bower
-  - bower install
-
-language: node_js
-node_js:
-  - "5.4.0"
-before_script:  
-  - npm install -g bower
-  - bower install
+  - bundle​​ ​​exec​​ ​​rake​​ ​​bower:install​
