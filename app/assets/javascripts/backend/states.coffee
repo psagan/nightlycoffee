@@ -1,6 +1,5 @@
 angular.module('App')
-.config(function($stateProvider) {
-
+.config(($stateProvider) ->
     $stateProvider.state('articles', {
         url: '/articles',
         templateUrl: 'backend/articles/tmpl/list.html',
@@ -42,5 +41,5 @@ angular.module('App')
         controller: 'TagsNewController',
         controllerAs: 'ctrl'
     })
-})
+)
 
